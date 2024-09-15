@@ -6,6 +6,20 @@
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
+    <script>
+        function validate()
+        {
+            var dat=document.getElementById('pas').value;
+                var bet=document.getElementById('cpas').value;
+                if(dat!=bet)
+                {
+                    document.getElementById('vert').innerHTML="Please Verify Password";
+                    return false;
+                }
+                return true;
+          }
+         
+    </script>
 <?php
     require('db.php');
     // When form submitted, insert values into the database.
@@ -18,6 +32,7 @@
         $email    = mysqli_real_escape_string($con, $email);
         $passwordx = stripslashes($_REQUEST['passwordx']);
         $passwordx= mysqli_real_escape_string($con, $passwordx);
+        
         $query    = "INSERT INTO users (username,email, password) VALUES ('$username','$email','$passwordx')";
         $result   = mysqli_query($con, $query);
         if ($result) {
@@ -33,11 +48,13 @@
         }
     } else {
 ?>
-    <form class="form" action="" method="post">
+    <form class="form" action="" method="post" onsubmit="return validate()">
         <h1 class="login-title">Registration</h1>
-        <input type="text" class="login-input" name="username" placeholder="Username" required />
-        <input type="text" class="login-input" name="email" placeholder="Email Adress">
-        <input type="password" class="login-input" name="passwordx" placeholder="Password">
+        <input type="text" class="login-input" name="username" placeholder="Username" autocomplete="off" require />
+        <input type="text" class="login-input" name="email" placeholder="Email Adress" autocomplete="off">
+        <input type="password" class="login-input" id="pas" name="passwordx" placeholder="Password" autocomplete="off">
+        <input type="password" class="login-input" id="cpas" name="Confirm Password" placeholder="Confirm Password" autocomplete="off">
+        <p id="vert" style="font-family:sans-serif;text-align:center"></p>
         <input type="submit" name="submit" value="Register" class="login-button">
         <p class="link">Already have an account? <a href="login.php">Login here</a></p>
     </form>

@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="style.css"/>
 </head>
@@ -34,9 +35,9 @@
       ?>  
        <form class="form" method="post" name="login">
         <h1 class="login-title">Login</h1>
-        <input type="text" class="login-input" name="username" placeholder="Username" autofocus="true"/>
-        <input type="password" class="login-input" name="passwordx" placeholder="Password"/>
-        <input type="submit" value="Login" name="submit" class="login-button"/>
+        <input type="text" class="login-input" name="username" placeholder="Username" autofocus="true" autocomplete="off"/>
+        <input type="password" class="login-input" name="passwordx" placeholder="Password" autocomplete="off"/>
+        <input type="submit" value="Login" name="submit" class="login-button" autocomplete="off"/>
         <p class="link">Don't have an account? <a href="registration.php">Registration Now</a></p>
         </form>
 </body>
